@@ -56,6 +56,11 @@ pipeline {
 
       }
     }
+    stage('Artifact') {
+      steps {
+        build 'SonarProject'
+      }
+    }
   }
   environment {
     NEXUS_VERSION = 'nexus3'
