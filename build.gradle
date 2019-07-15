@@ -9,14 +9,34 @@
 
 // Apply the java plugin to add support for Java
 apply plugin: 'java'
-
+apply plugin: 'findbugs'
 // In this section you declare where to find the dependencies of your project
 repositories {
     // Use 'jcenter' for resolving your dependencies.
     // You can declare any Maven/Ivy/file repository here.
     jcenter()
 }
-
+findbugs {
+         toolVersion = "3.0.1"
+         sourceSets = [sourceSets.main]
+         ignoreFailures = true
+         reportsDir = file("$project.buildDir/findbugsReports")
+         effort = "max"
+         showProgress = true
+         reportLevel = "high"
+       // visitors = ["FindSqlInjection", "SwitchFallthrough"]
+       //  omitVisitors = ["FindNonShortCircuit"]
+      //   includeFilter = file("$rootProject.projectDir/config/findbugs/includeFilter.xml")
+      //   excludeFilter = file("$rootProject.projectDir/config/findbugs/excludeFilter.xml")
+        
+     }
+     
+     tasks.withType(FindBugs) {
+    reports {
+        xml.enabled = false
+        html.enabled = true
+    }
+}
 // In this section you declare the dependencies for your production and test code
 dependencies {
     // The production code uses the SLF4J logging API at compile time
