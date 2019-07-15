@@ -23,7 +23,7 @@ findbugs {
          reportsDir = file("$project.buildDir/findbugsReports")
          effort = "max"
          showProgress = true
-         reportLevel = "high"
+         reportLevel = "low"
        // visitors = ["FindSqlInjection", "SwitchFallthrough"]
        //  omitVisitors = ["FindNonShortCircuit"]
       //   includeFilter = file("$rootProject.projectDir/config/findbugs/includeFilter.xml")
