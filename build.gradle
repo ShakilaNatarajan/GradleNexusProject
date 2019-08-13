@@ -8,10 +8,16 @@
  */
 
 // Apply the java plugin to add support for Java
-apply plugin: 'java'
-apply plugin: 'findbugs'
-plugins{
+plugins {
+    // Apply the java plugin to add support for Java
+    id 'java'
+    id 'jacoco'
 id "org.sonarqube" version "2.7"
+    // Apply the application plugin to add support for building an application
+    id 'application'
+    id 'findbugs'
+	
+
 }
 // In this section you declare where to find the dependencies of your project
 repositories {
